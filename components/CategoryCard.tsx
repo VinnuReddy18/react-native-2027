@@ -1,5 +1,5 @@
-import { Text, TouchableOpacity } from "react-native";
 import React from "react";
+import { Text, TouchableOpacity } from "react-native";
 import { Category } from "../utils/constants";
 
 interface CategoryCardProps {

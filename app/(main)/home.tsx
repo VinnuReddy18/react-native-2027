@@ -1,22 +1,22 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useRouter } from "expo-router";
+import React, { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
+  Alert,
+  FlatList,
   ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
-  TextInput,
-  FlatList,
-  Alert,
-  ActivityIndicator,
 } from "react-native";
-import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
-import { authApi, productsApi } from "../../utils/api.js";
-import LocationPicker from "../../components/LocationPicker";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
+import LocationPicker from "../../components/LocationPicker";
 import { addToCart } from "../../store/cartSlice";
+import { authApi, productsApi } from "../../utils/api.js";
 import { CATEGORIES } from "../../utils/constants";
 
 

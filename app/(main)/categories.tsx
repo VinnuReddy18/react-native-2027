@@ -1,18 +1,18 @@
+import { useRouter } from "expo-router";
+import React, { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
+  FlatList,
   StyleSheet,
   Text,
-  View,
-  FlatList,
-  TouchableOpacity,
   TextInput,
-  ActivityIndicator,
+  TouchableOpacity,
+  View,
 } from "react-native";
-import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import CategoryCard from "../../components/CategoryCard";
 import { productsApi } from "../../utils/api";
 import { CATEGORIES } from "../../utils/constants";
-import CategoryCard from "../../components/CategoryCard";
 
 const Categories = () => {
   const router = useRouter();
