@@ -17,6 +17,7 @@ import LocationPicker from "../../components/LocationPicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
+import { CATEGORIES } from "../../utils/constants";
 
 
 
@@ -90,14 +91,6 @@ const home = () => {
       },
     ]);
   };
-  const categories = [
-    { id: 1, name: "Fruits", icon: "🍎", color: "bg-red-100" },
-    { id: 2, name: "Vegetables", icon: "🥬", color: "bg-green-100" },
-    { id: 3, name: "Dairy", icon: "🥛", color: "bg-blue-100" },
-    { id: 4, name: "Electronics", icon: "📱", color: "bg-purple-100" },
-    { id: 5, name: "Clothes", icon: "👕", color: "bg-pink-100" },
-    { id: 6, name: "Snacks", icon: "🍿", color: "bg-yellow-100" },
-  ];
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -181,12 +174,19 @@ const home = () => {
             Categories
           </Text>
           <FlatList
-            data={categories}
+            data={CATEGORIES}
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-              <View className="items-center mr-4">
+              <TouchableOpacity 
+                className="items-center mr-4"
+                onPress={() => router.push({
+                  pathname: "/category/categoryDetail",
+                  params: { name: item.name }
+                })}
+                activeOpacity={0.7}
+              >
                 <View
                   className={`w-16 h-16 rounded-full ${item.color} items-center justify-center mb-2`}
                 >
@@ -195,7 +195,7 @@ const home = () => {
                 <Text className="text-xs font-medium text-gray-700">
                   {item.name}
                 </Text>
-              </View>
+              </TouchableOpacity>
             )}
             scrollEnabled={true}
             nestedScrollEnabled={true}
